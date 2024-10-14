@@ -59,7 +59,26 @@ public class Tree {
     }
 
     public void prettyDisplay(){
-        prettyDisplay(this.root);
+        prettyDisplay(root,0);
+    }
+    private void prettyDisplay(Node node, int level){
+        if(node == null){
+            return;
+        }
+
+        prettyDisplay(node.right, level+1);
+
+        if (level!=0){
+            for (int i=0;i<level-1;i++){
+                System.out.print("|\t\t");
+
+            }
+            System.out.print("|--------->"+ node.value);
+        }else{
+            System.out.println(node.value);
+        }
+
+        prettyDisplay(node.left , level+1);
     }
 
 
@@ -67,6 +86,6 @@ public class Tree {
         Scanner sc = new Scanner(System.in);
         Tree tree = new Tree();
         tree.populate(sc);
-        tree.display();
+        tree.prettyDisplay();
     }
 }
