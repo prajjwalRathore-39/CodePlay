@@ -3,6 +3,10 @@ package Leetcode;
 import java.util.Scanner;
 
 // https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/?envType=daily-question&envId=2024-10-18
+
+// The maximum OR will be found by taking the OR of each and every element of the Array.
+// And then by using the bruteforce method we will find all the subarrays that will be having the or equal to maximum OR
+
 public class MaximumBitwiseOrSubsets_2044 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
