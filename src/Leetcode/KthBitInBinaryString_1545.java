@@ -11,6 +11,7 @@ public class KthBitInBinaryString_1545 {
         System.out.println("Enter the Value for k");
         int k = sc.nextInt();
         System.out.println("The kth Bit in Nth String is : " + new KthBitInBinaryString_1545().findKthBit(n,k));
+        System.out.println("The kth Bit in Nth String is : " + new KthBitInBinaryString_1545().findKthBitOptimized(n,k));
     }
     public char findKthBit(int n, int k) {
         findNthString(n,1,"0");
@@ -41,5 +42,20 @@ public class KthBitInBinaryString_1545 {
             newStr = oldStr + "1" + reverse(inverse(oldStr));
         }
         findNthString(n,count+1,newStr);
+    }
+    public char findKthBitOptimized(int n, int k) {
+        if(n==1){
+            return '0';
+        }
+        int length = (1 << n) - 1;
+
+        int mid = length / 2 + 1;
+
+        if(k == mid){
+            return '1';
+        }else if(k<mid){
+            return findKthBitOptimized(n-1,k);
+        }
+        return findKthBitOptimized(n-1 , length - k + 1) == '0' ? '1' : '0';
     }
 }
